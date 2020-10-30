@@ -1,0 +1,27 @@
+{
+    "name": "bonsaicms/auth",
+    "type": "bonsaicms-plugin",
+    "description": "Bonsai CMS backend auth package",
+    "keywords": [
+        "Bonsai CMS",
+        "auth"
+    ],
+    "license": "MIT",
+    "require": {
+        "illuminate/support": "^8.0",
+        "laravel/fortify": "^1.6",
+        "laravel/sanctum": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "BonsaiCMS\\": "src/BonsaiCMS/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BonsaiCMS\\Providers\\AuthServiceProvider"
+            ]
+        }
+    }
+}
