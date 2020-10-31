@@ -26,6 +26,6 @@ Route::middleware('auth:sanctum')->get('user', function (Request $request) {
 
 // Password Reset...
 if (Features::enabled(Features::resetPasswords())) {
-    Route::post('password/forgot', [PasswordResetLinkController::class, 'store'])->middleware(['guest', 'throttle:passwordReset']);
-    Route::post('password/reset', [NewPasswordController::class, 'store'])->middleware(['guest']);
+    Route::post('password/forgot', [PasswordResetLinkController::class, 'store'])->middleware('throttle:passwordReset');
+    Route::post('password/reset', [NewPasswordController::class, 'store']);
 }
