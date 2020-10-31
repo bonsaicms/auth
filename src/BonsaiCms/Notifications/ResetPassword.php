@@ -50,8 +50,8 @@ class ResetPassword extends Notification
     public function toMail($notifiable)
     {
         $url = url('admin/auth/password/reset', [
-            'token' => $this->token,
-            'email' => base64_encode($notifiable->getEmailForPasswordReset()),
+            $notifiable->getEmailForPasswordReset(),
+            $this->token,
         ]);
 
         return (new MailMessage)
