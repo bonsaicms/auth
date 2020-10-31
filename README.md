@@ -8,7 +8,7 @@ This package is a server-side (frontend agnostic) authentication backend for Lar
 - [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum)
 
 ## Example Application
-We installed a fresh Laravel application (version 8.12). Then we [followed the installation](https://github.com/bonsaicms/demo/commits/master) steps. The result application can be found here: [https://github.com/bonsaicms/demo](https://github.com/bonsaicms/demo)
+We installed a fresh Laravel application (version 8.12). Then we [followed the installation](https://github.com/bonsaicms/auth-example/commits/master) steps. The result application can be found here: [https://github.com/bonsaicms/auth-example](https://github.com/bonsaicms/auth-example)
 
 ## Installation Steps
 
