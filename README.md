@@ -1,11 +1,23 @@
-# Installation Steps
+# Bonsai CMS - Auth
+This package is a part of [Bonsai CMS](https://github.com/bonsaicms).
 
-## 1. Install the package
+## Introduction
+This package is a server-side (frontend agnostic) authentication backend for Laravel. **It's designed to be used in a combination with an SPA** (Single-Page-Application) frontend. It uses these Laravel packages under the hood:
+
+- [Laravel Fortify](https://github.com/laravel/fortify)
+- [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum)
+
+## Example Application
+We installed a fresh Laravel application (version 8.12). Then we [followed the installation](https://github.com/bonsaicms/demo/commits/master) steps. The result application can be found here: [https://github.com/bonsaicms/demo](https://github.com/bonsaicms/demo)
+
+## Installation Steps
+
+### 1. Install the package
 ```bash2
 $ composer require bonsaicms/auth
 ```
 
-## 2. Update your `.env` file
+### 2. Update your `.env` file
 Add the following lines to your `.env` file.
 ```.env
 APP_PROTOCOL=http
@@ -14,12 +26,12 @@ APP_URL=${APP_PROTOCOL}://${APP_DOMAIN}
 SANCTUM_STATEFUL_DOMAINS=${APP_DOMAIN}
 ```
 
-## 3. Publish package resources
+### 3. Publish package resources
 ```bash2
 $ php artisan vendor:publish --provider="BonsaiCms\Providers\AuthServiceProvider"
 ```
 
-## 4. Register service provider
+### 4. Register service provider
 In your `config/app.php` file, add the following service provider class in the `providers` array.
 ```php
 'providers' => [
@@ -28,7 +40,7 @@ In your `config/app.php` file, add the following service provider class in the `
 ]
 ```
 
-## 5. Update your HTTP Kernel
+### 5. Update your HTTP Kernel
 Add the following lines to your `App\Http\Kernel.php` file.
 ```php
 protected $middlewareGroups = [
@@ -46,7 +58,7 @@ protected $middlewareGroups = [
 ];
 ```
 
-## 6. Update your `User` model
+### 6. Update your `User` model
 Replace a line in your `app/Models/User.php` file:
 ```php
 <?php
@@ -60,7 +72,7 @@ namespace App\Models;
     use Illuminate\Notifications\Notifiable;
 ```
 
-## 7. Run migrations
+### 7. Run migrations
 ```bash2
 $ php artisan migrate
 ```
