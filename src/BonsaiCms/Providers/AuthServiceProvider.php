@@ -11,16 +11,6 @@ use Illuminate\Support\Facades\RateLimiter;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -68,8 +58,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function configureRoutes()
     {
-        RateLimiter::for('passwordReset', function (Request $request) {
-            return Limit::perMinute(5)->by(optional($request->user())->id ?: $request->ip());
+        RateLimiter::for('passwordForgot', function (Request $request) {
+            return Limit::perMinute(1)->by($request->ip());
         });
 
         Route::group([
