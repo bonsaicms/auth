@@ -59,17 +59,30 @@ protected $middlewareGroups = [
 ```
 
 ### 6. Update your `User` model
-Replace a line in your `app/Models/User.php` file:
+Update your `app/Models/User.php` model.
+
+Your model should **implement** our interface `BonsaiCms\Auth\AuthenticatableContract`.
+
+Your model should **use** our trait `BonsaiCms\Auth\AuthenticatableTrait`.
+
 ```php
-<?php
+    <?php
+    
+    namespace App\Models;
 
-namespace App\Models;
-
++   use Illuminate\Database\Eloquent\Model;
++   use BonsaiCms\Auth\AuthenticatableTrait;
++   use BonsaiCms\Auth\AuthenticatableContract;
     use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
 -   use Illuminate\Foundation\Auth\User as Authenticatable;
-+   use BonsaiCms\Models\User as Authenticatable;
-    use Illuminate\Notifications\Notifiable;
+-   use Illuminate\Notifications\Notifiable;
+    
+-   class User extends Authenticatable
++   class User extends Model implements AuthenticatableContract
+    {
+-       use HasFactory, Notifiable;
++       use HasFactory, AuthenticatableTrait;
 ```
 
 ### 7. Run migrations
