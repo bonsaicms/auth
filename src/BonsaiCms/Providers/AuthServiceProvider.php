@@ -38,6 +38,10 @@ class AuthServiceProvider extends ServiceProvider
             ], 'bonsai-migrations');
 
             $this->publishes([
+                __DIR__.'/../../App/Notifications' => app_path('Notifications'),
+            ], 'bonsai-notifications');
+
+            $this->publishes([
                 __DIR__.'/../../App/Actions' => app_path('Actions'),
             ], 'bonsai-actions');
 

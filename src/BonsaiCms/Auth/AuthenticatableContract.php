@@ -1,6 +1,6 @@
 <?php
 
-namespace BonsaiCms;
+namespace BonsaiCms\Auth;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;

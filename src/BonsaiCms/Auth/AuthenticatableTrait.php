@@ -1,12 +1,12 @@
 <?php
 
-namespace BonsaiCms;
+namespace BonsaiCms\Auth;
 
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\MustVerifyEmail;
+use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
-use BonsaiCms\Notifications\ResetPassword;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 

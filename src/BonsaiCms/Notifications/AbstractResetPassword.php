@@ -3,12 +3,11 @@
 namespace BonsaiCms\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
-class ResetPassword extends Notification
+abstract class AbstractResetPassword extends Notification
 {
     use Queueable;
 
@@ -49,10 +48,7 @@ class ResetPassword extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('admin/auth/password/reset', [
-            $notifiable->getEmailForPasswordReset(),
-            $this->token,
-        ]);
+        $url = $this->resolveResetUrl($notifiable);
 
         return (new MailMessage)
             ->subject(Lang::get('Reset Password Notification'))
@@ -61,4 +57,6 @@ class ResetPassword extends Notification
             ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
             ->line(Lang::get('If you did not request a password reset, no further action is required.'));
     }
+
+    abstract protected function resolveResetUrl($notifiable);
 }
