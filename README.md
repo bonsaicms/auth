@@ -7,9 +7,6 @@ This package is a server-side (frontend agnostic) authentication backend for Lar
 - [Laravel Fortify](https://github.com/laravel/fortify)
 - [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum)
 
-## Example Application
-We installed a fresh Laravel application (version 8.12). Then we [followed the installation](https://github.com/bonsaicms/auth-example/commits/master) steps. The result application can be found here: [https://github.com/bonsaicms/auth-example](https://github.com/bonsaicms/auth-example)
-
 ## Installation Steps
 
 ### 1. Install the package
