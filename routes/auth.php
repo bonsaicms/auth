@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Laravel\Fortify\Features;
 use Illuminate\Support\Facades\Route;
+use BonsaiCms\Auth\FetchUserResponseContract;
 use Laravel\Fortify\Http\Controllers\NewPasswordController;
 use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -18,10 +18,8 @@ Route::post('login', [AuthenticatedSessionController::class, 'store'])
 
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);
 
-Route::middleware('auth:sanctum')->get('user', function (Request $request) {
-    return response()->json([
-        'user' => $request->user()
-    ]);
+Route::middleware('auth:sanctum')->get('user', function () {
+    return app(FetchUserResponseContract::class);
 });
 
 // Password Reset...

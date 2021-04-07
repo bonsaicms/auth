@@ -7,11 +7,7 @@ use Laravel\Fortify\Features;
 
 use Illuminate\Support\ServiceProvider;
 
-use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
-
+use App\Http\Responses\FetchUserResponse;
 use App\Http\Responses\LoginResponse;
 use App\Http\Responses\LogoutResponse;
 use App\Http\Responses\SuccessfulPasswordResetLinkRequestResponse;
@@ -19,6 +15,7 @@ use App\Http\Responses\FailedPasswordResetLinkRequestResponse;
 use App\Http\Responses\PasswordResetResponse;
 use App\Http\Responses\FailedPasswordResetResponse;
 
+use BonsaiCms\Auth\FetchUserResponseContract;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
 use Laravel\Fortify\Contracts\SuccessfulPasswordResetLinkRequestResponse as SuccessfulPasswordResetLinkRequestResponseContract;
@@ -67,6 +64,7 @@ class FortifyServiceProvider extends ServiceProvider
 
     protected function bindCustomResponses()
     {
+        $this->app->singleton(FetchUserResponseContract::class, FetchUserResponse::class);
         $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
         $this->app->singleton(LogoutResponseContract::class, LogoutResponse::class);
         $this->app->singleton(SuccessfulPasswordResetLinkRequestResponseContract::class, SuccessfulPasswordResetLinkRequestResponse::class);
